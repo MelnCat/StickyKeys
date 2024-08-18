@@ -1,4 +1,5 @@
 {
 	"key.stickykeys.stick_keys": "Stick Keys",
-	"category.stickykeys": "Sticky Keys"
+	"category.stickykeys": "StickyKeys",
+	"stickykeys.config.title": "StickyKeys Configuration"
 }

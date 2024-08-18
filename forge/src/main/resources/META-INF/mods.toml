@@ -6,7 +6,7 @@ license = "Insert License Here"
 [[mods]]
 modId = "stickykeys"
 version = "${version}"
-displayName = "Sticky Keys"
+displayName = "StickyKeys"
 authors = "Me!"
 description = '''
 This is an example description! Tell everyone what your mod is about!

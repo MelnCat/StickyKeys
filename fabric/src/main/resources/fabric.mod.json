@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "stickykeys",
   "version": "${version}",
-  "name": "Sticky Keys",
+  "name": "StickyKeys",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
     "Me!"
@@ -17,7 +17,8 @@
   "entrypoints": {
     "client": [
       "dev.melncat.stickykeys.fabric.StickyKeysFabric"
-    ]
+    ],
+    "modmenu": [ "dev.melncat.stickykeys.fabric.modmenu.StickyKeysModMenuApiImpl" ]
   },
   "mixins": [
     "stickykeys.mixins.json"
