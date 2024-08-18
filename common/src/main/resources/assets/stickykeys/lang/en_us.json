@@ -2,5 +2,5 @@
 	"key.stickykeys.stick_keys": "Stick Keys",
 	"category.stickykeys": "StickyKeys",
 	"stickykeys.config.title": "StickyKeys Configuration",
-	"stickykeys.hud.currently_holding": "Currently holding down %s"
+	"stickykeys.hud.currently_holding": "Currently holding down %s."
 }

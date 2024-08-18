@@ -4,6 +4,7 @@ import com.mojang.blaze3d.platform.InputConstants;
 import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
+import dev.melncat.stickykeys.mixin.KeyMappingAccessor;
 import dev.melncat.stickykeys.state.HeldKeyManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
@@ -28,18 +29,17 @@ public final class StickyKeys {
 		ClientTickEvent.CLIENT_POST.register(minecraft -> {
 			while (HOLD_KEYS_MAPPING.consumeClick()) {
 				List<KeyMapping> keys = Arrays.stream(Minecraft.getInstance().options.keyMappings)
-					.filter(x -> x != HOLD_KEYS_MAPPING && x.isDown)
+					.filter(x -> x != HOLD_KEYS_MAPPING && ((KeyMappingAccessor) x).getIsDown())
 					.toList();
 				HeldKeyManager.getInstance().setHeldKeys(keys);
 			}
-
 		});
 		ClientGuiEvent.RENDER_HUD.register((graphics, delta) -> {
 			if (!HeldKeyManager.getInstance().isEnabled()) return;
 			Minecraft minecraft = Minecraft.getInstance();
 			graphics.drawCenteredString(
 				minecraft.font,
-				Component.translatable("stickykeys.hud.currently_holding", Component.literal("test").withStyle(ChatFormatting.YELLOW)),
+				HeldKeyManager.getInstance().getHoldMessage(),
 				minecraft.getWindow().getGuiScaledWidth() / 2,
 				20,
 				0xffffff
