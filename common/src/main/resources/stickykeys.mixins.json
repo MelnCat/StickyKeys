@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "dev.melncat.stickykeys.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"minVersion": "0.8",
+	"client": [
+		"KeyMappingMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

@@ -25,10 +25,20 @@ public class StickyKeysConfig {
 			.build())
 		.build();
 
-	public Screen createScreen(Screen parent) {
+	public static Screen createScreen(Screen parent) {
 		return YetAnotherConfigLib.create(HANDLER, (defaults, config, builder) ->
 			builder
 				.title(Component.translatable("stickykeys.config.title"))
+				.category(ConfigCategory.createBuilder()
+					.name(Component.literal("thing category title"))
+					.option(Option.<Boolean>createBuilder()
+						.name(Component.literal("thing title"))
+						.description(OptionDescription.of(Component.literal("thing description")))
+						.binding(defaults.thing, () -> config.thing, newVal -> config.thing = newVal)
+						.controller(TickBoxControllerBuilder::create)
+						.build())
+					.build()
+				)
 		).generateScreen(parent);
 	}
 
