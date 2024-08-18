@@ -5,11 +5,15 @@ import dev.architectury.platform.Platform;
 import dev.isxander.yacl3.api.ConfigCategory;
 import dev.isxander.yacl3.api.Option;
 import dev.isxander.yacl3.api.OptionDescription;
+import dev.isxander.yacl3.api.OptionGroup;
 import dev.isxander.yacl3.api.YetAnotherConfigLib;
+import dev.isxander.yacl3.api.controller.EnumControllerBuilder;
+import dev.isxander.yacl3.api.controller.EnumDropdownControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
+import dev.melncat.stickykeys.cat.CatRenderer;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -35,7 +39,35 @@ public class StickyKeysConfig {
 						.description(OptionDescription.of(Component.translatable("stickykeys.config.option.default_detach.description")))
 						.binding(defaults.detachByDefault, () -> config.detachByDefault, newVal -> config.detachByDefault = newVal)
 						.controller(TickBoxControllerBuilder::create)
-						.build())
+						.build()
+					)
+					.group(OptionGroup.createBuilder()
+						.name(Component.translatable("stickykeys.config.group.cat.title"))
+						.description(OptionDescription.of(Component.translatable("stickykeys.config.group.cat.description")))
+						.collapsed(true)
+						.option(Option.<Boolean>createBuilder()
+							.name(Component.translatable("stickykeys.config.option.cat.enabled.title"))
+							.description(OptionDescription.of(Component.translatable("stickykeys.config.option.cat.enabled.description")))
+							.binding(defaults.enableCat, () -> config.enableCat, newVal -> config.enableCat = newVal)
+							.controller(TickBoxControllerBuilder::create)
+							.build()
+						)
+						.option(Option.<CatRenderer.Size>createBuilder()
+							.name(Component.translatable("stickykeys.config.option.cat.size.title"))
+							.description(OptionDescription.of(Component.translatable("stickykeys.config.option.cat.size.description")))
+							.binding(defaults.catSize, () -> config.catSize, newVal -> config.catSize = newVal)
+							.controller(EnumDropdownControllerBuilder::create)
+							.build()
+						)
+						.option(Option.<CatRenderer.Position>createBuilder()
+							.name(Component.translatable("stickykeys.config.option.cat.position.title"))
+							.description(OptionDescription.of(Component.translatable("stickykeys.config.option.cat.position.description")))
+							.binding(defaults.catPosition, () -> config.catPosition, newVal -> config.catPosition = newVal)
+							.controller(EnumDropdownControllerBuilder::create)
+							.build()
+						)
+						.build()
+					)
 					.build()
 				)
 		).generateScreen(parent);
@@ -43,4 +75,13 @@ public class StickyKeysConfig {
 
 	@SerialEntry
 	public boolean detachByDefault = false;
+
+	// Cat options
+
+	@SerialEntry
+	public boolean enableCat = false;
+
+	public CatRenderer.Size catSize = CatRenderer.Size.MEDIUM;
+
+	public CatRenderer.Position catPosition = CatRenderer.Position.TOP_CENTER;
 }

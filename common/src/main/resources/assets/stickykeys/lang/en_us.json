@@ -2,9 +2,41 @@
 	"key.stickykeys.stick_keys": "Stick Keys",
 	"key.stickykeys.detach_cursor": "Detach Cursor",
 	"category.stickykeys": "StickyKeys",
+	
 	"stickykeys.hud.currently_holding": "Currently holding down %s.",
+	
 	"stickykeys.config.title": "StickyKeys Configuration",
 	"stickykeys.config.category.main": "StickyKeys Configuration",
+	
 	"stickykeys.config.option.default_detach.title": "Detach Cursor On Hold",
-	"stickykeys.config.option.default_detach.description": "Whether to detach the cursor when keys are held down. (Allows the cursor to be moved without moving your camera)"
+	"stickykeys.config.option.default_detach.description": "Whether to detach the cursor when keys are held down. (Allows the cursor to be moved without moving your camera)",
+	
+	"stickykeys.config.group.cat.title": "Cat Settings",
+	"stickykeys.config.group.cat.description": "Settings for the cat.",
+	
+	"stickykeys.config.option.cat.enabled.title": "Enabled",
+	"stickykeys.config.option.cat.enabled.description": "Whether to enable rendering the cat.",
+	
+	"stickykeys.config.option.cat.size.title": "Size",
+	"stickykeys.config.option.cat.size.description": "The size of the cat.",
+	
+	"stickykeys.config.option.cat.position.title": "Position",
+	"stickykeys.config.option.cat.position.description": "The position to render the cat.",
+	
+	"stickykeys.cat.size.massive": "Massive",
+	"stickykeys.cat.size.large": "Large",
+	"stickykeys.cat.size.medium": "Medium",
+	"stickykeys.cat.size.small": "Small",
+	"stickykeys.cat.size.tiny": "Tiny",
+	"stickykeys.cat.size.microscopic": "Microscopic",
+	
+	"stickykeys.cat.position.top_left": "Top Left",
+	"stickykeys.cat.position.top_center": "Top Center",
+	"stickykeys.cat.position.top_right": "Top Right",
+	"stickykeys.cat.position.center_left": "Center Left",
+	"stickykeys.cat.position.center_center": "Center Center",
+	"stickykeys.cat.position.center_right": "Center Right",
+	"stickykeys.cat.position.bottom_left": "Bottom Left",
+	"stickykeys.cat.position.bottom_center": "Bottom Center",
+	"stickykeys.cat.position.bottom_right": "Bottom Right"
 }

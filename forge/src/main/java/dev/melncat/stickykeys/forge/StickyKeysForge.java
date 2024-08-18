@@ -5,6 +5,7 @@ import dev.architectury.platform.forge.EventBuses;
 import dev.architectury.utils.Env;
 import dev.isxander.yacl3.api.YetAnotherConfigLib;
 import dev.melncat.stickykeys.config.StickyKeysConfig;
+import net.minecraft.client.KeyMapping;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;

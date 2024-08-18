@@ -12,6 +12,7 @@ import java.util.Set;
 public class HeldKeyManager {
 	private final Set<KeyMapping> heldKeys = new HashSet<>();
 	private Component holdMessage = Component.empty();
+	private boolean checking = false;
 
 	private static final HeldKeyManager INSTANCE = new HeldKeyManager();
 
@@ -53,5 +54,13 @@ public class HeldKeyManager {
 
 	public Component getHoldMessage() {
 		return holdMessage;
+	}
+
+	public boolean isChecking() {
+		return checking;
+	}
+
+	public void setChecking(boolean checking) {
+		this.checking = checking;
 	}
 }

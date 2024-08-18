@@ -16,7 +16,7 @@ public class KeyMappingMixin {
 
 	@Inject(method = "isDown", at = @At("HEAD"), cancellable = true)
 	private void isDown(CallbackInfoReturnable<Boolean> cir) {
-		if (HeldKeyManager.getInstance().isHeld((KeyMapping) (Object) this)) {
+		if (HeldKeyManager.getInstance().isHeld((KeyMapping) (Object) this) && !HeldKeyManager.getInstance().isChecking()) {
 			cir.setReturnValue(true);
 		}
 	}

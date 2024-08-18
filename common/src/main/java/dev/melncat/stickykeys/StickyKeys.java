@@ -4,13 +4,11 @@ import com.mojang.blaze3d.platform.InputConstants;
 import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
+import dev.melncat.stickykeys.cat.CatRenderer;
 import dev.melncat.stickykeys.config.StickyKeysConfig;
-import dev.melncat.stickykeys.mixin.KeyMappingAccessor;
 import dev.melncat.stickykeys.state.HeldKeyManager;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,24 +30,37 @@ public final class StickyKeys {
 		"category.stickykeys"
 	);
 
+	private static final CatRenderer catRenderer = CatRenderer.catRenderer();
+
 	public static void init() {
 		registerKeyMappings();
 		StickyKeysConfig.HANDLER.load();
+		StickyKeysConfig config = StickyKeysConfig.HANDLER.instance();
 		ClientTickEvent.CLIENT_POST.register(minecraft -> {
 			while (HOLD_KEYS_MAPPING.consumeClick()) {
+				HeldKeyManager.getInstance().setChecking(false);
 				List<KeyMapping> keys = Arrays.stream(Minecraft.getInstance().options.keyMappings)
-					.filter(x -> x != HOLD_KEYS_MAPPING && ((KeyMappingAccessor) x).getIsDown())
+					.filter(x -> x != HOLD_KEYS_MAPPING && x.isDown())
 					.toList();
 				HeldKeyManager.getInstance().setHeldKeys(keys);
-				if (!keys.isEmpty() && StickyKeysConfig.HANDLER.instance().detachByDefault) Minecraft.getInstance().mouseHandler.releaseMouse();
+				if (!keys.isEmpty() && config.detachByDefault) Minecraft.getInstance().mouseHandler.releaseMouse();
 			}
 			while (DETACH_CURSOR_MAPPING.consumeClick()) {
 				Minecraft.getInstance().mouseHandler.releaseMouse();
 			}
 		});
 		ClientGuiEvent.RENDER_HUD.register((graphics, delta) -> {
-			if (!HeldKeyManager.getInstance().isEnabled()) return;
 			Minecraft minecraft = Minecraft.getInstance();
+			if (config.enableCat)
+				catRenderer.render(
+					HeldKeyManager.getInstance().isEnabled(),
+					graphics,
+					config.catSize,
+					config.catPosition,
+					minecraft.getWindow().getGuiScaledWidth(),
+					minecraft.getWindow().getGuiScaledHeight()
+				);
+			if (!HeldKeyManager.getInstance().isEnabled()) return;
 			graphics.drawCenteredString(
 				minecraft.font,
 				HeldKeyManager.getInstance().getHoldMessage(),
