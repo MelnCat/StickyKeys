@@ -37,6 +37,14 @@ public class MinecraftMixin {
 			if (!leftClick) ci.cancel();
 		}
 	}
+	/*@Redirect(method = "continueAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isUsingItem()Z"))
+	private boolean continueAttack(LocalPlayer instance) {
+		return false;
+	}
+	@Redirect(method = "startAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isHandsBusy()Z"))
+	private boolean startAttack(LocalPlayer instance) {
+		return false;
+	}*/
 
 
 }

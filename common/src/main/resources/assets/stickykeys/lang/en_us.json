@@ -1,6 +1,10 @@
 {
 	"key.stickykeys.stick_keys": "Stick Keys",
+	"key.stickykeys.detach_cursor": "Detach Cursor",
 	"category.stickykeys": "StickyKeys",
+	"stickykeys.hud.currently_holding": "Currently holding down %s.",
 	"stickykeys.config.title": "StickyKeys Configuration",
-	"stickykeys.hud.currently_holding": "Currently holding down %s."
+	"stickykeys.config.category.main": "StickyKeys Configuration",
+	"stickykeys.config.option.default_detach.title": "Detach Cursor On Hold",
+	"stickykeys.config.option.default_detach.description": "Whether to detach the cursor when keys are held down. (Allows the cursor to be moved without moving your camera)"
 }

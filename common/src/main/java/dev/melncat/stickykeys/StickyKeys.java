@@ -4,6 +4,7 @@ import com.mojang.blaze3d.platform.InputConstants;
 import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
+import dev.melncat.stickykeys.config.StickyKeysConfig;
 import dev.melncat.stickykeys.mixin.KeyMappingAccessor;
 import dev.melncat.stickykeys.state.HeldKeyManager;
 import net.minecraft.ChatFormatting;
@@ -24,14 +25,26 @@ public final class StickyKeys {
 		"category.stickykeys"
 	);
 
+	public static final KeyMapping DETACH_CURSOR_MAPPING = new KeyMapping(
+		"key.stickykeys.detach_cursor",
+		InputConstants.Type.KEYSYM,
+		InputConstants.KEY_SEMICOLON,
+		"category.stickykeys"
+	);
+
 	public static void init() {
 		registerKeyMappings();
+		StickyKeysConfig.HANDLER.load();
 		ClientTickEvent.CLIENT_POST.register(minecraft -> {
 			while (HOLD_KEYS_MAPPING.consumeClick()) {
 				List<KeyMapping> keys = Arrays.stream(Minecraft.getInstance().options.keyMappings)
 					.filter(x -> x != HOLD_KEYS_MAPPING && ((KeyMappingAccessor) x).getIsDown())
 					.toList();
 				HeldKeyManager.getInstance().setHeldKeys(keys);
+				if (!keys.isEmpty() && StickyKeysConfig.HANDLER.instance().detachByDefault) Minecraft.getInstance().mouseHandler.releaseMouse();
+			}
+			while (DETACH_CURSOR_MAPPING.consumeClick()) {
+				Minecraft.getInstance().mouseHandler.releaseMouse();
 			}
 		});
 		ClientGuiEvent.RENDER_HUD.register((graphics, delta) -> {

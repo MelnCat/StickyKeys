@@ -15,8 +15,4 @@ dependencies {
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
     modImplementation "dev.isxander:yet-another-config-lib:$rootProject.yacl_version-fabric"
-
-    // remove when 1.21
-    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
-    implementation(include("io.github.llamalad7:mixinextras-forge:0.4.1"))
 }

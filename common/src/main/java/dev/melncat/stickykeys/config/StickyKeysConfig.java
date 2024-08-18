@@ -5,7 +5,6 @@ import dev.architectury.platform.Platform;
 import dev.isxander.yacl3.api.ConfigCategory;
 import dev.isxander.yacl3.api.Option;
 import dev.isxander.yacl3.api.OptionDescription;
-import dev.isxander.yacl3.api.OptionGroup;
 import dev.isxander.yacl3.api.YetAnotherConfigLib;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
@@ -30,11 +29,11 @@ public class StickyKeysConfig {
 			builder
 				.title(Component.translatable("stickykeys.config.title"))
 				.category(ConfigCategory.createBuilder()
-					.name(Component.literal("thing category title"))
+					.name(Component.translatable("stickykeys.config.category.main"))
 					.option(Option.<Boolean>createBuilder()
-						.name(Component.literal("thing title"))
-						.description(OptionDescription.of(Component.literal("thing description")))
-						.binding(defaults.thing, () -> config.thing, newVal -> config.thing = newVal)
+						.name(Component.translatable("stickykeys.config.option.default_detach.title"))
+						.description(OptionDescription.of(Component.translatable("stickykeys.config.option.default_detach.description")))
+						.binding(defaults.detachByDefault, () -> config.detachByDefault, newVal -> config.detachByDefault = newVal)
 						.controller(TickBoxControllerBuilder::create)
 						.build())
 					.build()
@@ -43,5 +42,5 @@ public class StickyKeysConfig {
 	}
 
 	@SerialEntry
-	public boolean thing = true;
+	public boolean detachByDefault = false;
 }
