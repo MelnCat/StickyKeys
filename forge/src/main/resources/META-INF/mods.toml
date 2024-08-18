@@ -4,7 +4,7 @@ loaderVersion = "[47,)"
 license = "Insert License Here"
 
 [[mods]]
-modId = "sticky_keys"
+modId = "stickykeys"
 version = "${version}"
 displayName = "Sticky Keys"
 authors = "Me!"
@@ -14,21 +14,21 @@ This is an example description! Tell everyone what your mod is about!
 displayTest="IGNORE_ALL_VERSION"
 #logoFile = ""
 
-[[dependencies.sticky_keys]]
+[[dependencies.stickykeys]]
 modId = "forge"
 mandatory = true
 versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.sticky_keys]]
+[[dependencies.stickykeys]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20.1,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.sticky_keys]]
+[[dependencies.stickykeys]]
 modId = "architectury"
 mandatory = true
 versionRange = "[9.2.14,)"

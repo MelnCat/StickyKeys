@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'sticky_keys'
+rootProject.name = 'stickykeys'
 
 include 'common'
 include 'fabric'

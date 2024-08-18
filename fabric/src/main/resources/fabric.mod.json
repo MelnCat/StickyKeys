@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "sticky_keys",
+  "id": "stickykeys",
   "version": "${version}",
   "name": "Sticky Keys",
   "description": "This is an example description! Tell everyone what your mod is about!",
@@ -12,7 +12,7 @@
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
   "license": "CC0-1.0",
-  "icon": "assets/sticky_keys/icon.png",
+  "icon": "assets/stickykeys/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
@@ -20,7 +20,7 @@
     ]
   },
   "mixins": [
-    "sticky_keys.mixins.json"
+    "stickykeys.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.16.2",
