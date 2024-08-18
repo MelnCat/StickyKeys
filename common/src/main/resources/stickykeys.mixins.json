@@ -3,9 +3,7 @@
 	"package": "dev.melncat.stickykeys.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"minVersion": "0.8",
-	"client": [
-		"KeyMappingMixin"
-	],
+	"client": ["KeyboardHandlerMixin", "KeyMappingMixin"],
 	"injectors": {
 		"defaultRequire": 1
 	}

@@ -38,6 +38,8 @@ subprojects {
 			name = "Terraformers"
 			url = "https://maven.terraformersmc.com/"
 		}
+
+		mavenCentral()
 	}
 
 	loom {

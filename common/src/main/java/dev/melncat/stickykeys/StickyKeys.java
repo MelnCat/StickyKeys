@@ -5,8 +5,10 @@ import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import dev.melncat.stickykeys.state.HeldKeyManager;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,9 +32,18 @@ public final class StickyKeys {
 					.toList();
 				HeldKeyManager.getInstance().setHeldKeys(keys);
 			}
+
 		});
 		ClientGuiEvent.RENDER_HUD.register((graphics, delta) -> {
-
+			if (!HeldKeyManager.getInstance().isEnabled()) return;
+			Minecraft minecraft = Minecraft.getInstance();
+			graphics.drawCenteredString(
+				minecraft.font,
+				Component.translatable("stickykeys.hud.currently_holding", Component.literal("test").withStyle(ChatFormatting.YELLOW)),
+				minecraft.getWindow().getGuiScaledWidth() / 2,
+				20,
+				0xffffff
+			);
 		});
 
 	}

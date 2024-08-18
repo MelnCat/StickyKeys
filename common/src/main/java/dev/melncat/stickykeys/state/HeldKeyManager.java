@@ -29,4 +29,8 @@ public class HeldKeyManager {
 	public static HeldKeyManager getInstance() {
 		return INSTANCE;
 	}
+
+	public void clear() {
+		heldKeys.clear();
+	}
 }
