@@ -70,6 +70,7 @@ public class StickyKeysConfig {
 					)
 					.build()
 				)
+				.save(HANDLER::save)
 		).generateScreen(parent);
 	}
 

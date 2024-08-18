@@ -2,18 +2,24 @@ package dev.melncat.stickykeys.cat;
 
 import dev.isxander.yacl3.api.NameableEnum;
 import dev.melncat.stickykeys.StickyKeys;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 public class CatRenderer {
-	private static final ResourceLocation CAT_TEXTURE_AWAKE = ResourceLocation.tryBuild(StickyKeys.MOD_ID, "cat/awake.png");
-	private static final ResourceLocation CAT_TEXTURE_ASLEEP = ResourceLocation.tryBuild(StickyKeys.MOD_ID, "cat/asleep.png");
+	private static final ResourceLocation CAT_TEXTURE_AWAKE = ResourceLocation.tryBuild(StickyKeys.MOD_ID, "textures/cat/awake.png");
+	private static final ResourceLocation CAT_TEXTURE_ASLEEP = ResourceLocation.tryBuild(StickyKeys.MOD_ID, "textures/cat/asleep.png");
 
-	private CatRenderer() {}
+	private static final int FADE_TIME = 10;
 
-	public static CatRenderer catRenderer() { return new CatRenderer(); }
+	private int ticksSinceDisable = 0;
+
+	private CatRenderer() {
+	}
+
+	public static CatRenderer catRenderer() {
+		return new CatRenderer();
+	}
 
 	// Dependency injection is the root of all good
 	public void render(boolean enabled, GuiGraphics graphics, Size size, Position position, int screenWidth, int screenHeight) {
@@ -24,16 +30,26 @@ public class CatRenderer {
 		int x = position.calculateX(width, screenWidth);
 		int y = position.calculateY(height, screenHeight);
 
-		graphics.blit(CAT_TEXTURE_AWAKE, x, y, 0, 0, width, height);
+		if (enabled) {
+			graphics.blit(CAT_TEXTURE_AWAKE, x, y + 40, 0, 0, width, height, width, height);
+			ticksSinceDisable = FADE_TIME;
+		} else {
+			if (ticksSinceDisable <= 0) return;
+			ticksSinceDisable--;
+			graphics.setColor(255, 255, 255, (FADE_TIME - ticksSinceDisable) / ((float) ticksSinceDisable) * 255f);
+			System.out.println((FADE_TIME - ticksSinceDisable) / ((float) ticksSinceDisable) * 255f);
+			graphics.blit(CAT_TEXTURE_ASLEEP, x, y + 40, 0, 0, width, height, width, height);
+			graphics.setColor(255, 255, 255, 255);
+		}
 	}
 
 	public enum Size implements NameableEnum {
-		MASSIVE(0, 0),
-		LARGE(0, 0),
-		MEDIUM(0, 0),
-		SMALL(0, 0),
-		TINY(0, 0),
-		MICROSCOPIC(0, 0);
+		MASSIVE(212, 187),
+		LARGE(96, 85),
+		MEDIUM(77, 68),
+		SMALL(58, 51),
+		TINY(20, 17),
+		MICROSCOPIC(2, 2);
 
 		public int getWidth() {
 			return width;
@@ -77,7 +93,8 @@ public class CatRenderer {
 		CENTER_RIGHT(PositionCalculators.MAX, PositionCalculators.CENTER),
 		BOTTOM_LEFT(PositionCalculators.MIN, PositionCalculators.MAX),
 		BOTTOM_CENTER(PositionCalculators.CENTER, PositionCalculators.MAX),
-		BOTTOM_RIGHT(PositionCalculators.MAX, PositionCalculators.MAX),;
+		BOTTOM_RIGHT(PositionCalculators.MAX, PositionCalculators.MAX),
+		;
 
 
 		private final PositionCalculator calculateX;
@@ -91,6 +108,7 @@ public class CatRenderer {
 		public int calculateX(int catWidth, int screenWidth) {
 			return calculateX.calculate(catWidth, screenWidth);
 		}
+
 		public int calculateY(int catHeight, int screenHeight) {
 			return calculateY.calculate(catHeight, screenHeight);
 		}
