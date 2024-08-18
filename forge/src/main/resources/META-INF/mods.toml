@@ -1,0 +1,36 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "Insert License Here"
+
+[[mods]]
+modId = "sticky_keys"
+version = "${version}"
+displayName = "Sticky Keys"
+authors = "Me!"
+description = '''
+This is an example description! Tell everyone what your mod is about!
+'''
+displayTest="IGNORE_ALL_VERSION"
+#logoFile = ""
+
+[[dependencies.sticky_keys]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.sticky_keys]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.sticky_keys]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.2.14,)"
+ordering = "AFTER"
+side = "BOTH"
