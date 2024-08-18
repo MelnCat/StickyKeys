@@ -2,6 +2,7 @@ package dev.melncat.stickykeys.state;
 
 import net.minecraft.client.KeyMapping;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,6 +19,11 @@ public class HeldKeyManager {
 
 	public boolean isEnabled() {
 		return !heldKeys.isEmpty();
+	}
+
+	public void setHeldKeys(Collection<KeyMapping> keys) {
+		heldKeys.clear();
+		heldKeys.addAll(keys);
 	}
 
 	public static HeldKeyManager getInstance() {
