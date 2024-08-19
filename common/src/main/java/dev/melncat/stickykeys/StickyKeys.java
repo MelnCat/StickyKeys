@@ -37,6 +37,7 @@ public final class StickyKeys {
 		StickyKeysConfig.HANDLER.load();
 		StickyKeysConfig config = StickyKeysConfig.HANDLER.instance();
 		ClientTickEvent.CLIENT_POST.register(minecraft -> {
+			HeldKeyManager.getInstance().tickShiftProtection();
 			while (HOLD_KEYS_MAPPING.consumeClick()) {
 				HeldKeyManager.getInstance().setChecking(false);
 				List<KeyMapping> keys = Arrays.stream(Minecraft.getInstance().options.keyMappings)

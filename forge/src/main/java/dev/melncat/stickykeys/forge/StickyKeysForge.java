@@ -1,11 +1,13 @@
 package dev.melncat.stickykeys.forge;
 
+import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.platform.Platform;
 import dev.architectury.platform.forge.EventBuses;
 import dev.architectury.utils.Env;
 import dev.isxander.yacl3.api.YetAnotherConfigLib;
 import dev.melncat.stickykeys.config.StickyKeysConfig;
 import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;

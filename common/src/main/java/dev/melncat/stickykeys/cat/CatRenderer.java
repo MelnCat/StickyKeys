@@ -12,7 +12,7 @@ public class CatRenderer {
 
 	private static final int FADE_TIME = 10;
 
-	private int ticksSinceDisable = 0;
+	private int fadeTimeLeft = 0;
 
 	private CatRenderer() {
 	}
@@ -32,14 +32,13 @@ public class CatRenderer {
 
 		if (enabled) {
 			graphics.blit(CAT_TEXTURE_AWAKE, x, y + 40, 0, 0, width, height, width, height);
-			ticksSinceDisable = FADE_TIME;
+			fadeTimeLeft = FADE_TIME;
 		} else {
-			if (ticksSinceDisable <= 0) return;
-			ticksSinceDisable--;
-			graphics.setColor(255, 255, 255, (FADE_TIME - ticksSinceDisable) / ((float) ticksSinceDisable) * 255f);
-			System.out.println((FADE_TIME - ticksSinceDisable) / ((float) ticksSinceDisable) * 255f);
+			if (fadeTimeLeft <= 0) return;
+			fadeTimeLeft--;
+			graphics.setColor(255, 255, 255, fadeTimeLeft / ((float) FADE_TIME));
 			graphics.blit(CAT_TEXTURE_ASLEEP, x, y + 40, 0, 0, width, height, width, height);
-			graphics.setColor(255, 255, 255, 255);
+			graphics.setColor(255, 255, 255, 1);
 		}
 	}
 

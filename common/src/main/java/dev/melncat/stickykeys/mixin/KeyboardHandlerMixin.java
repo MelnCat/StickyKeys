@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(KeyboardHandler.class)
-public class KeyboardHandlerMixin {
+public abstract class KeyboardHandlerMixin {
 	@WrapOperation(method = "keyPress", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;pauseGame(Z)V"))
 	private void keyPress(Minecraft instance, boolean b, Operation<Void> original) {
 		if (HeldKeyManager.getInstance().isEnabled()) {
