@@ -26,6 +26,7 @@ public class HeldKeyManager {
 
 	public boolean isHeld(KeyMapping key) {
 		if (checking) return false;
+		if (Minecraft.getInstance().screen != null) return false;
 		return heldKeys.contains(key) || (shiftProtectionTime > 0 && key == Minecraft.getInstance().options.keyShift);
 	}
 
