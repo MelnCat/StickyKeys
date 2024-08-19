@@ -8,6 +8,7 @@ modId = "stickykeys"
 version = "${version}"
 displayName = "StickyKeys"
 authors = "MelnCat"
+logoFile="assets/stickykeys/icon.png"
 description = '''
 Hold keys down without needing to do it yourself.
 '''
