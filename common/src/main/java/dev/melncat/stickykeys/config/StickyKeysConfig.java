@@ -13,6 +13,7 @@ import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
+import dev.melncat.stickykeys.StickyKeys;
 import dev.melncat.stickykeys.cat.CatRenderer;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -20,9 +21,9 @@ import net.minecraft.resources.ResourceLocation;
 
 public class StickyKeysConfig {
 	public static ConfigClassHandler<StickyKeysConfig> HANDLER = ConfigClassHandler.createBuilder(StickyKeysConfig.class)
-		.id(new ResourceLocation("mymod", "my_config"))
+		.id(ResourceLocation.tryBuild(StickyKeys.MOD_ID, "config"))
 		.serializer(config -> GsonConfigSerializerBuilder.create(config)
-			.setPath(Platform.getConfigFolder().resolve("my_mod.json5"))
+			.setPath(Platform.getConfigFolder().resolve("stickykeys.json5"))
 			.appendGsonBuilder(GsonBuilder::setPrettyPrinting) // not needed, pretty print by default
 			.setJson5(true)
 			.build())
