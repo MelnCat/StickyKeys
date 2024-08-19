@@ -1,37 +1,32 @@
 {
-  "schemaVersion": 1,
-  "id": "stickykeys",
-  "version": "${version}",
-  "name": "StickyKeys",
-  "description": "This is an example description! Tell everyone what your mod is about!",
-  "authors": [
-    "Me!"
-  ],
-  "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
-  },
-  "license": "CC0-1.0",
-  "icon": "assets/stickykeys/icon.png",
-  "environment": "*",
-  "entrypoints": {
-    "client": [
-      "dev.melncat.stickykeys.fabric.StickyKeysFabric"
-    ],
-    "modmenu": [ "dev.melncat.stickykeys.fabric.modmenu.StickyKeysModMenuApiImpl" ]
-  },
-  "mixins": [
-    "stickykeys.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.16.2",
-    "minecraft": "~1.20.1",
-    "java": ">=17",
-    "architectury": ">=9.2.14",
-    "fabric-api": "*",
-    "yet_another_config_lib_v3": "*"
-  },
-  "suggests": {
-    "another-mod": "*"
-  }
+	"schemaVersion": 1,
+	"id": "stickykeys",
+	"version": "${version}",
+	"name": "StickyKeys",
+	"description": "Hold keys down without needing to do it yourself.",
+	"authors": [
+		"MelnCat"
+	],
+	"contact": {
+		"sources": "https://github.com/MelnCat/StickyKeys"
+	},
+	"license": "MPL-2.0",
+	"icon": "assets/stickykeys/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"dev.melncat.stickykeys.fabric.StickyKeysFabric"
+		],
+		"modmenu": ["dev.melncat.stickykeys.fabric.modmenu.StickyKeysModMenuApiImpl"]
+	},
+	"mixins": [
+		"stickykeys.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.2",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"architectury": ">=9.2.14",
+		"yet_another_config_lib_v3": "*"
+	}
 }

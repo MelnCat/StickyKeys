@@ -11,6 +11,9 @@
 	"stickykeys.config.option.default_detach.title": "Detach Cursor On Hold",
 	"stickykeys.config.option.default_detach.description": "Whether to detach the cursor when keys are held down. (Allows the cursor to be moved without moving your camera)",
 	
+	"stickykeys.config.option.shift_protection.title": "Shift Protection",
+	"stickykeys.config.option.shift_protection.description": "Waits a few ticks before shifting is no longer held to prevent falling.",
+	
 	"stickykeys.config.group.cat.title": "Cat Settings",
 	"stickykeys.config.group.cat.description": "Settings for the cat.",
 	

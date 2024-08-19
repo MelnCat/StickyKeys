@@ -31,13 +31,13 @@ public class CatRenderer {
 		int y = position.calculateY(height, screenHeight);
 
 		if (enabled) {
-			graphics.blit(CAT_TEXTURE_AWAKE, x, y + 40, 0, 0, width, height, width, height);
+			graphics.blit(CAT_TEXTURE_AWAKE, x, y, 0, 0, width, height, width, height);
 			fadeTimeLeft = FADE_TIME;
 		} else {
 			if (fadeTimeLeft <= 0) return;
 			fadeTimeLeft--;
 			graphics.setColor(255, 255, 255, fadeTimeLeft / ((float) FADE_TIME));
-			graphics.blit(CAT_TEXTURE_ASLEEP, x, y + 40, 0, 0, width, height, width, height);
+			graphics.blit(CAT_TEXTURE_ASLEEP, x, y, 0, 0, width, height, width, height);
 			graphics.setColor(255, 255, 255, 1);
 		}
 	}
@@ -79,14 +79,15 @@ public class CatRenderer {
 
 	private static class PositionCalculators {
 		private static final PositionCalculator MIN = (cat, screen) -> 0;
+		private static final PositionCalculator MIN_PAD = (cat, screen) -> 40;
 		private static final PositionCalculator CENTER = (cat, screen) -> screen / 2 - cat / 2;
 		private static final PositionCalculator MAX = (cat, screen) -> screen - cat;
 	}
 
 	public enum Position implements NameableEnum {
-		TOP_LEFT(PositionCalculators.MIN, PositionCalculators.MIN),
-		TOP_CENTER(PositionCalculators.CENTER, PositionCalculators.MIN),
-		TOP_RIGHT(PositionCalculators.MAX, PositionCalculators.MIN),
+		TOP_LEFT(PositionCalculators.MIN, PositionCalculators.MIN_PAD),
+		TOP_CENTER(PositionCalculators.CENTER, PositionCalculators.MIN_PAD),
+		TOP_RIGHT(PositionCalculators.MAX, PositionCalculators.MIN_PAD),
 		CENTER_LEFT(PositionCalculators.MIN, PositionCalculators.CENTER),
 		CENTER_CENTER(PositionCalculators.CENTER, PositionCalculators.CENTER),
 		CENTER_RIGHT(PositionCalculators.MAX, PositionCalculators.CENTER),

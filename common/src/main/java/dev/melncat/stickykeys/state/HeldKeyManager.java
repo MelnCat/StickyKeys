@@ -1,5 +1,6 @@
 package dev.melncat.stickykeys.state;
 
+import dev.melncat.stickykeys.config.StickyKeysConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 public class HeldKeyManager {
 	private final Set<KeyMapping> heldKeys = new HashSet<>();
+	private static final int SHIFT_PROTECTION_TIME = 8;
 	private int shiftProtectionTime = 0;
 
 	private Component holdMessage = Component.empty();
@@ -23,6 +25,7 @@ public class HeldKeyManager {
 	}
 
 	public boolean isHeld(KeyMapping key) {
+		if (checking) return false;
 		return heldKeys.contains(key) || (shiftProtectionTime > 0 && key == Minecraft.getInstance().options.keyShift);
 	}
 
@@ -35,8 +38,10 @@ public class HeldKeyManager {
 	}
 
 	public void setHeldKeys(Collection<KeyMapping> keys) {
-		if (heldKeys.contains(Minecraft.getInstance().options.keyShift) && !keys.contains(Minecraft.getInstance().options.keyShift)) {
-			shiftProtectionTime = 10;
+		if (heldKeys.contains(Minecraft.getInstance().options.keyShift)
+			&& !keys.contains(Minecraft.getInstance().options.keyShift)
+			&& StickyKeysConfig.HANDLER.instance().shiftProtection) {
+			shiftProtectionTime = SHIFT_PROTECTION_TIME;
 		}
 		heldKeys.clear();
 		heldKeys.addAll(keys);
@@ -44,7 +49,7 @@ public class HeldKeyManager {
 		else {
 			MutableComponent keysList = Component.empty();
 			boolean first = true;
-			for (Component key : keys.stream().map(x -> Component.literal(x.getName())).distinct().toList()) {
+			for (Component key : keys.stream().map(x -> x.getTranslatedKeyMessage()).distinct().toList()) {
 				if (!first) keysList.append(Component.literal(", ").withStyle(ChatFormatting.GRAY));
 				else first = false;
 				keysList.append(key.copy().withStyle(ChatFormatting.WHITE));
@@ -58,16 +63,14 @@ public class HeldKeyManager {
 	}
 
 	public void clear() {
+		if (heldKeys.contains(Minecraft.getInstance().options.keyShift) && StickyKeysConfig.HANDLER.instance().shiftProtection)
+			shiftProtectionTime = SHIFT_PROTECTION_TIME;
 		heldKeys.clear();
 		holdMessage = Component.empty();
 	}
 
 	public Component getHoldMessage() {
 		return holdMessage;
-	}
-
-	public boolean isChecking() {
-		return checking;
 	}
 
 	public void setChecking(boolean checking) {

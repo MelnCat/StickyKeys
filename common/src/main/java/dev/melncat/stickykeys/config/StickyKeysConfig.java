@@ -41,6 +41,13 @@ public class StickyKeysConfig {
 						.controller(TickBoxControllerBuilder::create)
 						.build()
 					)
+					.option(Option.<Boolean>createBuilder()
+						.name(Component.translatable("stickykeys.config.option.shift_protection.title"))
+						.description(OptionDescription.of(Component.translatable("stickykeys.config.option.shift_protection.description")))
+						.binding(defaults.shiftProtection, () -> config.shiftProtection, newVal -> config.shiftProtection = newVal)
+						.controller(TickBoxControllerBuilder::create)
+						.build()
+					)
 					.group(OptionGroup.createBuilder()
 						.name(Component.translatable("stickykeys.config.group.cat.title"))
 						.description(OptionDescription.of(Component.translatable("stickykeys.config.group.cat.description")))
@@ -76,6 +83,9 @@ public class StickyKeysConfig {
 
 	@SerialEntry
 	public boolean detachByDefault = false;
+
+	@SerialEntry
+	public boolean shiftProtection = true;
 
 	// Cat options
 

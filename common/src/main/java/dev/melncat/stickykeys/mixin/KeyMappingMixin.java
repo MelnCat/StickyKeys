@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class KeyMappingMixin {
 	@Inject(method = "isDown", at = @At("HEAD"), cancellable = true)
 	private void isDown(CallbackInfoReturnable<Boolean> cir) {
-		if (HeldKeyManager.getInstance().isHeld((KeyMapping) (Object) this) && !HeldKeyManager.getInstance().isChecking()) {
+		if (HeldKeyManager.getInstance().isHeld((KeyMapping) (Object) this)) {
 			cir.setReturnValue(true);
 		}
 	}

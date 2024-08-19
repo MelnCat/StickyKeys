@@ -1,15 +1,15 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "MPL-2.0"
 
 [[mods]]
 modId = "stickykeys"
 version = "${version}"
 displayName = "StickyKeys"
-authors = "Me!"
+authors = "MelnCat"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Hold keys down without needing to do it yourself.
 '''
 displayTest="IGNORE_ALL_VERSION"
 #logoFile = ""
