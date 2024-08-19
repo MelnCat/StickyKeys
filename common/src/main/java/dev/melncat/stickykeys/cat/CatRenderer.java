@@ -50,9 +50,9 @@ public class CatRenderer {
 				1,
 				0,
 				1,
-				255,
-				255,
-				255,
+				1,
+				1,
+				1,
 				fadeTimeLeft / ((float) FADE_TIME)
 			);
 		}
