@@ -16,29 +16,35 @@ displayTest="IGNORE_ALL_VERSION"
 #logoFile = ""
 
 [[dependencies.stickykeys]]
-modId = "forge"
-mandatory = true
-versionRange = "[47,)"
+modId = "neoforge"
+type = "required"
+versionRange = "[21.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.stickykeys]]
 modId = "minecraft"
-mandatory = true
-versionRange = "[1.20.1,)"
+type = "required"
+versionRange = "[1.21,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.stickykeys]]
 modId = "architectury"
-mandatory = true
-versionRange = "[9.2.14,)"
+type = "required"
+versionRange = "[13.0.2,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.stickykeys]]
 modId = "yet_another_config_lib_v3"
 mandatory = true
-versionRange = "(,3.4.2+1.20.1-forge]"
+versionRange = "(3.5.0,]"
 ordering = "AFTER"
 side = "BOTH"
+
+[[mixins]]
+config = "stickykeys.mixins.json"
+
+[[mixins]]
+config = "stickykeys.neoforge.mixins.json"
