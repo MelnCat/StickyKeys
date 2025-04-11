@@ -18,28 +18,28 @@ displayTest="IGNORE_ALL_VERSION"
 [[dependencies.stickykeys]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.0,)"
+versionRange = "[21.4,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.stickykeys]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21,)"
+versionRange = "[1.21.4,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.stickykeys]]
 modId = "architectury"
 type = "required"
-versionRange = "[13.0.2,)"
+versionRange = "[15.0.1,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.stickykeys]]
 modId = "yet_another_config_lib_v3"
 mandatory = true
-versionRange = "(3.5.0,]"
+versionRange = "(3.6.2,]"
 ordering = "AFTER"
 side = "BOTH"
 
