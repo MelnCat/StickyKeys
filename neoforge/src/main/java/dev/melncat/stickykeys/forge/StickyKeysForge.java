@@ -4,7 +4,6 @@ import dev.architectury.platform.Platform;
 import dev.architectury.utils.Env;
 import dev.melncat.stickykeys.StickyKeys;
 import dev.melncat.stickykeys.config.StickyKeysConfig;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
@@ -23,13 +22,8 @@ public final class StickyKeysForge {
 			IConfigScreenFactory.class,
 			() -> new IConfigScreenFactory() {
 
-				@Override
-				public @NotNull Screen createScreen(Minecraft client, Screen parent) {
-					return StickyKeysConfig.createScreen(parent);
-				}
-
 				// For 1.21.1 neoforge
-				public @NotNull Screen createScreen(ModContainer container, Screen parent) {
+				public @NotNull Screen createScreen(@NotNull ModContainer container, @NotNull Screen parent) {
 					return StickyKeysConfig.createScreen(parent);
 				}
 			}

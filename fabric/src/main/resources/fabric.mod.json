@@ -23,10 +23,10 @@
 		"stickykeys.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.2",
-		"minecraft": "~1.21",
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.4",
 		"java": ">=17",
-		"architectury": ">=9.2.14",
+		"architectury": ">=15.0.1",
 		"yet_another_config_lib_v3": "*"
 	}
 }
