@@ -22,12 +22,6 @@ public final class StickyKeysForge {
 		ModLoadingContext.get().registerExtensionPoint(
 			IConfigScreenFactory.class,
 			() -> new IConfigScreenFactory() {
-
-				@Override
-				public @NotNull Screen createScreen(Minecraft client, Screen parent) {
-					return StickyKeysConfig.createScreen(parent);
-				}
-
 				// For 1.21.1 neoforge
 				public @NotNull Screen createScreen(ModContainer container, Screen parent) {
 					return StickyKeysConfig.createScreen(parent);

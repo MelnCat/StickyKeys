@@ -2,8 +2,8 @@ package dev.melncat.stickykeys.cat;
 
 import dev.isxander.yacl3.api.NameableEnum;
 import dev.melncat.stickykeys.StickyKeys;
-import dev.melncat.stickykeys.mixin.GuiGraphicsInvoker;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -34,26 +34,16 @@ public class CatRenderer {
 		int y = position.calculateY(height, screenHeight);
 
 		if (enabled) {
-			graphics.blit(CAT_TEXTURE_AWAKE, x, y, 0, 0, width, height, width, height);
+			graphics.blit(RenderType::guiTextured, CAT_TEXTURE_AWAKE, x, y, 0, 0, width, height, width, height);
 			fadeTimeLeft = FADE_TIME;
 		} else {
 			if (fadeTimeLeft <= 0) return;
 			fadeTimeLeft--;
-			((GuiGraphicsInvoker) graphics).invokeInnerBlit(
+			graphics.blit(
+				RenderType::guiTextured,
 				CAT_TEXTURE_ASLEEP,
-				x,
-				x + width,
-				y,
-				y + height,
-				0,
-				0,
-				1,
-				0,
-				1,
-				1,
-				1,
-				1,
-				fadeTimeLeft / ((float) FADE_TIME)
+				x, y, 0, 0, width, height, width, height,
+				(int) (0xff * fadeTimeLeft / ((float) FADE_TIME)) + 0xffffff00
 			);
 		}
 	}
