@@ -3,11 +3,10 @@ package dev.melncat.stickykeys.cat;
 import dev.isxander.yacl3.api.NameableEnum;
 import dev.melncat.stickykeys.StickyKeys;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-
-import java.awt.*;
+import net.minecraft.util.ARGB;
 
 public class CatRenderer {
 	private static final ResourceLocation CAT_TEXTURE_AWAKE = ResourceLocation.tryBuild(StickyKeys.MOD_ID, "textures/cat/awake.png");
@@ -34,16 +33,16 @@ public class CatRenderer {
 		int y = position.calculateY(height, screenHeight);
 
 		if (enabled) {
-			graphics.blit(RenderType::guiTextured, CAT_TEXTURE_AWAKE, x, y, 0, 0, width, height, width, height);
+			graphics.blit(RenderPipelines.GUI_TEXTURED, CAT_TEXTURE_AWAKE, x, y, 0, 0, width, height, width, height);
 			fadeTimeLeft = FADE_TIME;
 		} else {
 			if (fadeTimeLeft <= 0) return;
 			fadeTimeLeft--;
 			graphics.blit(
-				RenderType::guiTextured,
+				RenderPipelines.GUI_TEXTURED,
 				CAT_TEXTURE_ASLEEP,
 				x, y, 0, 0, width, height, width, height,
-				(int) (0xff * fadeTimeLeft / ((float) FADE_TIME)) + 0xffffff00
+				ARGB.colorFromFloat(fadeTimeLeft / (float) FADE_TIME, 1, 1, 1)
 			);
 		}
 	}
