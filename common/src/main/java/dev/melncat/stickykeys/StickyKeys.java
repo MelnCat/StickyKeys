@@ -9,6 +9,7 @@ import dev.melncat.stickykeys.config.StickyKeysConfig;
 import dev.melncat.stickykeys.state.HeldKeyManager;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.ARGB;
 
 import java.util.Arrays;
 import java.util.List;
@@ -67,7 +68,7 @@ public final class StickyKeys {
 				HeldKeyManager.getInstance().getHoldMessage(),
 				minecraft.getWindow().getGuiScaledWidth() / 2,
 				20,
-				0xffffff
+				ARGB.color(255, 255, 255)
 			);
 		});
 
