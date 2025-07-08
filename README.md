@@ -8,7 +8,7 @@ Tired to having to manually hold down space, left click, or some other button wh
 
 Simply hold down the keys that you want held down, then press the stick keys button (default: **K**)! All active keys will then be held for you, until you press **Escape** to exit.
 
-Available at https://modrinth.com/mod/stickykeys
+Available at https://modrinth.com/mod/stickykeys and https://www.curseforge.com/minecraft/mc-mods/stickykeys
 
 ![https://cdn.modrinth.com/data/4U3hcfoH/images/3eeeb170b0d4573bf1d1a7bf90c2ea47a7cca040.gif](https://cdn.modrinth.com/data/4U3hcfoH/images/3eeeb170b0d4573bf1d1a7bf90c2ea47a7cca040.gif)
 

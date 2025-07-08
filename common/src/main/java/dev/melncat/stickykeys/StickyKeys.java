@@ -75,6 +75,7 @@ public final class StickyKeys {
 
 	public static void registerKeyMappings() {
 		KeyMappingRegistry.register(HOLD_KEYS_MAPPING);
+		KeyMappingRegistry.register(DETACH_CURSOR_MAPPING);
 	}
 
 }
