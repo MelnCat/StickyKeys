@@ -1,7 +1,7 @@
 {
 	"key.stickykeys.stick_keys": "Stick Keys",
-	"key.stickykeys.detach_cursor": "Detach Cursor",
-	"category.stickykeys": "StickyKeys",
+    "key.stickykeys.detach_cursor": "Detach Cursor",
+	"key.category.stickykeys.keybinds": "StickyKeys",
 	
 	"stickykeys.hud.currently_holding": "Currently holding down %s.",
 	
