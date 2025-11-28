@@ -28,12 +28,12 @@ public final class StickyKeys {
             KEYBINDS_CATEGORY
     );
 
-    public static final KeyMapping DETACH_CURSOR_MAPPING = new KeyMapping(
-            "key.stickykeys.detach_cursor",
-            InputConstants.Type.KEYSYM,
-            InputConstants.KEY_SEMICOLON,
-            KEYBINDS_CATEGORY
-    );
+	public static final KeyMapping DETACH_CURSOR_MAPPING = new KeyMapping(
+		"key.stickykeys.detach_cursor",
+		InputConstants.Type.KEYSYM,
+		InputConstants.KEY_SEMICOLON,
+		KEYBINDS_CATEGORY
+	);
 
     private static final CatRenderer catRenderer = CatRenderer.catRenderer();
 

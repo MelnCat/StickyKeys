@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(MouseHandler.class)
 public abstract class MouseHandlerMixin {
-	@WrapWithCondition(method = "onPress", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MouseHandler;grabMouse()V"))
+	@WrapWithCondition(method = "onButton", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MouseHandler;grabMouse()V"))
 	private boolean keyPress(MouseHandler instance) {
 		return !(StickyKeysConfig.HANDLER.instance().detachByDefault && HeldKeyManager.getInstance().isEnabled());
 	}
