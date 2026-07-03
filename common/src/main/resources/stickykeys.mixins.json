@@ -3,7 +3,7 @@
 	"package": "dev.melncat.stickykeys.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"minVersion": "0.8",
-	"client": ["GameRendererMixin", "KeyboardHandlerMixin", "KeyMappingMixin", "MinecraftMixin", "MouseHandlerMixin"],
+	"client": ["KeyboardHandlerMixin", "KeyMappingMixin", "MinecraftMixin", "MouseHandlerMixin"],
 	"injectors": {
 		"defaultRequire": 1
 	}

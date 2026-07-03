@@ -17,11 +17,11 @@ import dev.melncat.stickykeys.StickyKeys;
 import dev.melncat.stickykeys.cat.CatRenderer;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class StickyKeysConfig {
 	public static ConfigClassHandler<StickyKeysConfig> HANDLER = ConfigClassHandler.createBuilder(StickyKeysConfig.class)
-		.id(ResourceLocation.tryBuild(StickyKeys.MOD_ID, "config"))
+		.id(Identifier.tryBuild(StickyKeys.MOD_ID, "config"))
 		.serializer(config -> GsonConfigSerializerBuilder.create(config)
 			.setPath(Platform.getConfigFolder().resolve("stickykeys.json5"))
 			.appendGsonBuilder(GsonBuilder::setPrettyPrinting)

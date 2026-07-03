@@ -9,7 +9,7 @@ import dev.melncat.stickykeys.config.StickyKeysConfig;
 import dev.melncat.stickykeys.state.HeldKeyManager;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public final class StickyKeys {
     public static final String MOD_ID = "stickykeys";
 
     private static final KeyMapping.Category KEYBINDS_CATEGORY = KeyMapping.Category.register(
-            ResourceLocation.tryBuild(MOD_ID, "keybinds"));
+            Identifier.tryBuild(MOD_ID, "keybinds"));
 
     public static final KeyMapping HOLD_KEYS_MAPPING = new KeyMapping(
             "key.stickykeys.stick_keys",
@@ -67,7 +67,7 @@ public final class StickyKeys {
                         minecraft.getWindow().getGuiScaledHeight()
                 );
             if (!HeldKeyManager.getInstance().isEnabled()) return;
-            graphics.drawCenteredString(
+            graphics.centeredText(
                     minecraft.font,
                     HeldKeyManager.getInstance().getHoldMessage(),
                     minecraft.getWindow().getGuiScaledWidth() / 2,

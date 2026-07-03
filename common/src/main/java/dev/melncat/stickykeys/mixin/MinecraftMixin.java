@@ -37,6 +37,12 @@ public abstract class MinecraftMixin {
 			if (!leftClick) ci.cancel();
 		}
 	}
+	@Inject(method = "pauseIfInactive", at = @At("HEAD"), cancellable = true)
+	private void pauseIfInactive(CallbackInfo ci) {
+		if (HeldKeyManager.getInstance().isEnabled()) {
+			ci.cancel();
+		}
+	}
 	/*@Redirect(method = "continueAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isUsingItem()Z"))
 	private boolean continueAttack(LocalPlayer instance) {
 		return false;

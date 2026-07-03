@@ -2,15 +2,15 @@ package dev.melncat.stickykeys.cat;
 
 import dev.isxander.yacl3.api.NameableEnum;
 import dev.melncat.stickykeys.StickyKeys;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 
 public class CatRenderer {
-	private static final ResourceLocation CAT_TEXTURE_AWAKE = ResourceLocation.tryBuild(StickyKeys.MOD_ID, "textures/cat/awake.png");
-	private static final ResourceLocation CAT_TEXTURE_ASLEEP = ResourceLocation.tryBuild(StickyKeys.MOD_ID, "textures/cat/asleep.png");
+	private static final Identifier CAT_TEXTURE_AWAKE = Identifier.tryBuild(StickyKeys.MOD_ID, "textures/cat/awake.png");
+	private static final Identifier CAT_TEXTURE_ASLEEP = Identifier.tryBuild(StickyKeys.MOD_ID, "textures/cat/asleep.png");
 
 	private static final int FADE_TIME = 10;
 
@@ -24,7 +24,7 @@ public class CatRenderer {
 	}
 
 	// Dependency injection is the root of all good
-	public void render(boolean enabled, GuiGraphics graphics, Size size, Position position, int screenWidth, int screenHeight) {
+	public void render(boolean enabled, GuiGraphicsExtractor graphics, Size size, Position position, int screenWidth, int screenHeight) {
 		// todo
 		int width = size.getWidth();
 		int height = size.getHeight();
