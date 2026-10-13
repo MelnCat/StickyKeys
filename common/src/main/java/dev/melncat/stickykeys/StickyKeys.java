@@ -23,14 +23,14 @@ public final class StickyKeys {
 
     public static final KeyMapping HOLD_KEYS_MAPPING = new KeyMapping(
             "key.stickykeys.stick_keys",
-            InputConstants.Type.KEYSYM,
+            InputConstants.Type.KEYBOARD,
             InputConstants.KEY_K,
             KEYBINDS_CATEGORY
     );
 
 	public static final KeyMapping DETACH_CURSOR_MAPPING = new KeyMapping(
 		"key.stickykeys.detach_cursor",
-		InputConstants.Type.KEYSYM,
+		InputConstants.Type.KEYBOARD,
 		InputConstants.KEY_SEMICOLON,
 		KEYBINDS_CATEGORY
 	);
